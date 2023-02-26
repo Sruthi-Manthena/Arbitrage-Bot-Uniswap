@@ -18,12 +18,6 @@ async function getSellPrice(account, inputAmt) {
         "0x2ad95483ac838E2884563aD278e933fba96Bc242",
         account
     )
-    const { reserve0, reserve1 } = await sakePair.getReserves()
-    const sakeRouter = await ethers.getContractAt(
-        "IUniswapV2Router02",
-        "0x9C578b573EdE001b95d51a55A3FAfb45f5608b1f",
-        account
-    )
     const sellPrice = (
         await sakeRouter.getAmountIn(inputAmt, reserve0, reserve1)
     ).toString()
